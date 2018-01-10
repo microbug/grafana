@@ -26,6 +26,8 @@ services:
 ```
 
 ### docker run
+Check [the official Grafana Docker page](https://github.com/grafana/grafana-docker) for further config options.
+
 ```bash
 docker run -d \
     -p 3000:3000 \
