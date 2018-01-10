@@ -1,5 +1,5 @@
 # Grafana
-`grafana/grafana:latest` with user-configurable UID and GID. Almost exactly the same as [the official image (`grafana/grafana`)](https://github.com/grafana/grafana/) except for the UID/GID configuration — for anything not related to UIDs/GIDs, go there.
+`grafana/grafana:latest` with user-configurable UID and GID. Almost exactly the same as [the official image (`grafana/grafana`)](https://github.com/grafana/grafana/) except for the UID/GID configuration — for anything not related to UIDs/GIDs, go there. Image: `microbug/grafana:latest`.
 
 ## Usage
 The UID and GID of the `grafana` user can be set through environment variables. Examples below use the usual default of UID and GID both equal to 1000, substitute your own for different situations.
