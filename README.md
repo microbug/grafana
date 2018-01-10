@@ -33,10 +33,13 @@ docker run -d \
     -p 3000:3000 \
     --env UID=1000 \
     --env GID=1000 \
-    -v /your/var/lib/grafana/folder:/var/lib/grafana \
-    -v /your/etc/grafana/folder:/etc/grafana \
+    -v /your/var/lib/grafana/folder:/var/lib/grafana:rw \
+    -v /your/etc/grafana/folder:/etc/grafana:rw \
     microbug/grafana:latest
 ```
+
+### Read-only mounting
+If you want to keep your host's filesystem protected from the container, this image allows you to mount the `/etc/grafana` folder read only. You can do this by changing `rw` to `ro` in the examples above. However, note that you cannot have a read-only `/var/lib/grafana` as Grafana needs to store its internal database there. The only alternative to a read/write mount is to not map a host folder to `/var/lib/grafana`, which will prevent Grafana settings and dashboards from persisting between container reboots. With Grafana 5.0+ there is [a provisioning feature](http://docs.grafana.org/administration/provisioning/) that allows you to automatically add dashboards and datasources from certain folder, which will presumably be allowed to be read-only. With the current Grafana 4.6.x you will have to use the API to add these with each reboot.
 
 ## A note on versions
 At the moment, Docker Hub builds this repo automatically when it is pushed to, or when `grafana/grafana`  is pushed to. This means that it should be in line with `grafana/grafana:latest`. If there is demand I can do builds for specific Grafana versions (create an issue if you need this).
